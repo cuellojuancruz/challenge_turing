@@ -1,33 +1,38 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
-// import { createTask } from "../../reducer/Tasks/actions";
+import { reduxForm, Field, Form } from "redux-form";
+import { createTask } from "../../reducer/Tasks/actions";
+import React from "react"
+import "./CreateTask.css"
 
 export function CreateTask(props) {
   const dispatch = useDispatch();
 
 
     const handleSubmit = formValues => {
-        // dispatch(createTask(formValues))
+      console.log("entro al handle")
+      dispatch(createTask(formValues))
     }
 
   
 
   return (
-      <form onSubmit={props.handleSubmit(handleSubmit)}>
-      <Link to="/">
-        <button>Home</button>
+      <Form onSubmit={props.handleSubmit(handleSubmit)}>
+      <Link to="/" className="task-link">
+        <button className='createTask'>Home</button>
       </Link>
-        <div>
-          <label>Nombre de tarea</label>
-          <Field name="name" component="input" type="text"/>
+        <div className="create-div">
+          <label className="task-label">Nombre de tarea</label>
+          <Field className="create-input" name="name" component="input" type="text"/>
         </div>
-        <div>
-          <label>Descripcion</label>
-          <Field name="description" component="input"/>
+        <div className="create-div">
+          <label className="task-label">Descripcion</label>
+          <Field className="create-input" name="description" component="input" type="text"/>
         </div>
-        <button type="submit">Submit</button>
-      </form>
+        <div className="task-link">
+        <button type="submit" className='createTask'>Submit</button>
+        </div>
+      </Form>
   );
 }
 
