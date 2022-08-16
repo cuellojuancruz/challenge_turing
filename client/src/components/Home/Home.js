@@ -49,7 +49,7 @@ export function Home(){
                     <button onClick={() => {handleLogOut()}} className='createtask'>Log Out</button>
                 </div>
             </Link>
-            <div>
+            <div className="MyTasks">
                 <button onClick={() => {handleMyTasks()}} className='createtask'>Mis Tareas</button>
             </div>
 

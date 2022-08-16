@@ -34,13 +34,13 @@ export function Login(props) {
           <h4>Contraseña</h4>
           <Field name="password" type="password" component="input" />
         </div>
-        <div className="task-link" style={{width:"110px", padding:"0"} }>
+        <div className="task-link" style={{width:"120px", padding:"0"}}>
           <button disabled= { isAuthenticated } type="submit" className="createTask">
             Login
           </button>
         </div>
         <Link to="/Register" className="task-link">
-        <button className='createTask'>¿No tienes cuenta?</button>
+        <button className='createTask' style={{width:"280px"}}>¿No tienes cuenta?</button>
       </Link>
       </Form>
     </div>
