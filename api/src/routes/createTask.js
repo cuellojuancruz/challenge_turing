@@ -2,12 +2,14 @@ const router = require("express").Router();
 const { Task } = require("../db");
 
 router.post("/", (req, res) => {
-  const { name, description } = req.body;
+  const { name, description, id } = req.body;
+  
 
   try {
       const newTask = Task.create({
         name,
-        description,
+        description: description.description,
+        userId: id
       })
       newTask.then((resp) => {
         res.send(resp);

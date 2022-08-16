@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import {
   checkingAuthentication,
   loginUser,
-  startGoogleSignIn,
 } from "../../reducer/Login/actions";
 
 export function Login(props) {
@@ -22,10 +21,7 @@ export function Login(props) {
     dispatch(loginUser(e));
   };
 
-  const handleGoogle = () => {
-    dispatch(startGoogleSignIn());
-    dispatch(checkingAuthentication());
-  };
+
 
   return (
     <div>
@@ -38,7 +34,7 @@ export function Login(props) {
           <h4>Contraseña</h4>
           <Field name="password" type="password" component="input" />
         </div>
-        <div className="task-link">
+        <div className="task-link" style={{width:"110px", padding:"0"} }>
           <button disabled= { isAuthenticated } type="submit" className="createTask">
             Login
           </button>
@@ -46,17 +42,6 @@ export function Login(props) {
         <Link to="/Register" className="task-link">
         <button className='createTask'>¿No tienes cuenta?</button>
       </Link>
-      </Form>
-      <Form onSubmit={props.handleSubmit(handleGoogle)}>
-      
-      <button
-        disabled= { isAuthenticated }
-        type="submit"
-        className="createTask"
-        onClick={ handleGoogle }
-      >
-        LoginWithGoogle
-      </button>
       </Form>
     </div>
   );

@@ -3,18 +3,16 @@ const { User } = require("../db");
 
 router.get("/:email/:password", (req, res) => {
   const { email, password } = req.params;
-  console.log(email, password)
 
   try {
 
-    if(password === "contraseña"){
+    if(password === "contraseña" && email === "hola@gmail.com"){
       const admin =  User.findOne({
         where:{
           email: email
         }
       })
       admin.then((resp) => {
-        console.log(resp, "esta es la respuesta del find")
         return res.status(200).send(resp)
       })
     }

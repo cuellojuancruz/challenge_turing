@@ -6,7 +6,6 @@ const initialState = {
 
 function tasksReducer (state = initialState, action){
 
-    // console.log(action.type)
 
     if(action.type === "getTasks"){
         return {
@@ -19,6 +18,13 @@ function tasksReducer (state = initialState, action){
         return {
             ...state,
             tasks: [...state.tasks, action.payload]
+        }
+    }
+
+    if(action.type === "getMyTasks"){
+        return {
+            ...state,
+            tasks: action.payload
         }
     }
 

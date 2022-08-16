@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { reduxForm, Field, Form } from "redux-form";
 import { createTask } from "../../reducer/Tasks/actions";
@@ -6,12 +6,16 @@ import React from "react"
 import "./CreateTask.css"
 
 export function CreateTask(props) {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    const userName = useSelector(state => state.loginReducer.user)
+    const Do = {id: 0, name: userName.name, description: ""}
+    Do.id =userName.id
 
 
     const handleSubmit = formValues => {
-      console.log("entro al handle")
-      dispatch(createTask(formValues))
+      Do.description = formValues
+      dispatch(createTask(Do))
     }
 
   
@@ -21,10 +25,6 @@ export function CreateTask(props) {
       <Link to="/" className="task-link">
         <button className='createTask'>Home</button>
       </Link>
-        <div className="create-div">
-          <label className="task-label">Nombre de tarea</label>
-          <Field className="create-input" name="name" component="input" type="text"/>
-        </div>
         <div className="create-div">
           <label className="task-label">Descripcion</label>
           <Field className="create-input" name="description" component="input" type="text"/>

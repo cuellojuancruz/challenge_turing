@@ -10,7 +10,6 @@ export function Register(props) {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
-    console.log(e)
     dispatch(checkingAuthentication())
     dispatch(registerUser(e));
   };

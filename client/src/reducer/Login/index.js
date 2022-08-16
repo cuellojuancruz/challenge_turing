@@ -15,14 +15,6 @@ function loginReducer (state = initialState, action){
         }
     }
 
-    if(action.type === "startGoogleSignIn"){
-        return {
-            ...state,
-            status: "Authenticated",
-            user: action.payload
-        }
-    }
-
     if(action.type === "registerUser"){
         return {
             ...state,

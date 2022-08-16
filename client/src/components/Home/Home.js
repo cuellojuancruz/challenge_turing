@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTasks } from '../../reducer/Tasks/actions';
+import { getTasks, getMyTasks } from '../../reducer/Tasks/actions';
 import { logOut } from '../../reducer/Login/actions';
 import "./Home.css"
 
@@ -10,9 +10,13 @@ import "./Home.css"
 
 
 export function Home(){
-
-
+    
+    
     const dispatch = useDispatch()
+    const userId = useSelector(state => state.loginReducer.user)
+    
+    
+
 
     useEffect(() => {
         dispatch(getTasks())
@@ -20,6 +24,11 @@ export function Home(){
 
     const handleLogOut =() => {
         dispatch(logOut())
+    }
+
+    const handleMyTasks =() => {
+
+        dispatch(getMyTasks(userId.id))
     }
 
 
@@ -40,6 +49,9 @@ export function Home(){
                     <button onClick={() => {handleLogOut()}} className='createtask'>Log Out</button>
                 </div>
             </Link>
+            <div>
+                <button onClick={() => {handleMyTasks()}} className='createtask'>Mis Tareas</button>
+            </div>
 
         <div className='conteiner'>
             {

@@ -5,6 +5,7 @@ const createTasks = require("./createTask")
 const getTasks = require("./getTasks")
 const createUser = require("./createUser")
 const getUser = require("./getUser")
+const getMyTasks = require("./getMyTasks")
 
 const router = Router();
 
@@ -15,6 +16,7 @@ router.use("/createTask", createTasks)
 router.use("/getTasks", getTasks)
 router.use("/createUser", createUser)
 router.use("/getUser", getUser)
+router.use("/getMyTasks", getMyTasks)
 
 
 router.get("/error", (req, res) => {

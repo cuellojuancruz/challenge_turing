@@ -1,4 +1,3 @@
-import { singInWithGoogle } from "../../Firebase/providers"
 import axios from 'axios';
 
 
@@ -25,11 +24,15 @@ export function registerUser(user){
 
 export function loginUser({email, password}){
     return async function(dispatch){
-        const user = await axios.get(`http://localhost:3001/getUser/${email}/${password}`)
-        dispatch({
-            type: "loginUser",
-            payload: user 
-        })
+        try {
+            const user = await axios.get(`http://localhost:3001/getUser/${email}/${password}`)
+            dispatch({
+                type: "loginUser",
+                payload: user.data
+            })
+        } catch (error) {
+            alert("usuario no encontrado")
+        }
     }
 }
 
@@ -41,20 +44,3 @@ export function logOut(){
     }
 }
 
-
-
-
-export function startGoogleSignIn(){
-    return async function(dispatch){
-        const result = await singInWithGoogle()
-        dispatch({type:"checkingAuthentication", payload:"checking"})
-
-        if( !result.ok ) return dispatch({type:"errorMessage", payload: result.errorMessage})
-
-        axios.post("http://localhost:3001/createUser/", result)
-        dispatch({
-            type:"startGoogleSignIn",
-            payload: result
-        })
-    }
-}
