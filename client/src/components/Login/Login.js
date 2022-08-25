@@ -7,6 +7,7 @@ import {
   checkingAuthentication,
   loginUser,
 } from "../../reducer/Login/actions";
+import "./Login.css"
 
 export function Login(props) {
   const dispatch = useDispatch();
@@ -25,22 +26,22 @@ export function Login(props) {
 
   return (
     <div>
-      <Form onSubmit={props.handleSubmit(handleSubmit)}>
+      <Form onSubmit={props.handleSubmit(handleSubmit)} className="Form-Login">
         <div>
-          <h4>Email</h4>
-          <Field name="email" type="email" component="input" />
+          <h4 className="Credentials-Input">Email</h4>
+          <Field name="email" type="email" component="input" className="Credentials"/>
         </div>
         <div>
-          <h4>Contraseña</h4>
-          <Field name="password" type="password" component="input" />
+          <h4 className="Credentials-Input">Contraseña</h4>
+          <Field name="password" type="password" component="input" className="Credentials"/>
         </div>
-        <div className="task-link" style={{width:"120px", padding:"0"}}>
-          <button disabled= { isAuthenticated } type="submit" className="createTask">
+        <div className="task-link" style={{width:"105px", marginTop:"25px"}}>
+          <button disabled= { isAuthenticated } type="submit" className="createTask" style={{marginTop:"7px"}}>
             Login
           </button>
         </div>
-        <Link to="/Register" className="task-link">
-        <button className='createTask' style={{width:"280px"}}>¿No tienes cuenta?</button>
+        <Link to="/Register" className="Link-Not-Account">
+        <button className="Not-Account">¿No tienes cuenta?</button>
       </Link>
       </Form>
     </div>

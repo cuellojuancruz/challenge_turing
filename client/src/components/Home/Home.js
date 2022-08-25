@@ -38,20 +38,25 @@ export function Home(){
     return(
         <div>
 
+            <div className="Bottom-NavBar">
+
             <Link to="/CreateTask" className='create-link'>
                 <div>
                     <button className='createtask'>Crear tarea</button>
                 </div>
             </Link>
 
+            <div className="MyTasks">
+                <button onClick={() => {handleMyTasks()}} className='createtask'>Mis Tareas</button>
+            </div>
             <Link to="/" className='create-link'>
                 <div>
                     <button onClick={() => {handleLogOut()}} className='createtask'>Log Out</button>
                 </div>
             </Link>
-            <div className="MyTasks">
-                <button onClick={() => {handleMyTasks()}} className='createtask'>Mis Tareas</button>
+
             </div>
+
 
         <div className='conteiner'>
             {

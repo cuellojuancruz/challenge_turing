@@ -11,7 +11,7 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
+    /* margin: 0; */
     font-family: "Fira sans", sans-serif;
 }
 
@@ -45,9 +45,19 @@ body{
     color: var(--light);
     font-size: 1rem;
     border: #EC4899 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     
 }
 
+.Bottom-NavBar{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
 
 .createtask{
     background-image: linear-gradient(to right, var(--pink),
@@ -103,4 +113,5 @@ body{
     rgb(16, 16, 17));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 5px;
 }
